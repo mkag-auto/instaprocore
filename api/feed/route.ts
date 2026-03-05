@@ -72,7 +72,7 @@ async function procoreGet<T>(path: string, qs: Record<string, string | number | 
     url.searchParams.set(k, String(v));
   }
 
-  const r = await fetch(url.toString(), { headers() });
+  const r = await fetch(url.toString(), { headers: headers() });
   if (!r.ok) {
     const text = await r.text().catch(() => "");
     throw new Error(`${path} failed: HTTP ${r.status} ${text}`);
